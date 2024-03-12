@@ -8,7 +8,7 @@ export default function BookListPage() {
   async function request() {
     try {
       const response = await fetch(
-        "https://t3t4-dfe-pb-grl-m1-default-rtdb.firebaseio.com/books.json",
+        "https://t3t4-dfe-pb-grl-m1-default-rtdb.firebaseio.com/books.json"
       );
       if (response.ok) {
         const data = await response.json();
@@ -31,7 +31,7 @@ export default function BookListPage() {
     (book) =>
       book.genre.toLowerCase().includes(state.toLowerCase()) ||
       book.author.toLowerCase().includes(state.toLowerCase()) ||
-      book.title.toLowerCase().includes(state.toLowerCase()),
+      book.title.toLowerCase().includes(state.toLowerCase())
   );
   return (
     <div className={style.body}>
@@ -47,17 +47,39 @@ export default function BookListPage() {
           value={state}
           onChange={(event) => setState(event.target.value)}
           className={style.selectStyle}
+          data-cy="selectFilter"
         >
-          <option value="">Escolha um Gênero</option>
-          <option value="Ficção Distópica">Ficção Distópica</option>
-          <option value="Realismo mágico">Realismo Mágico</option>
-          <option value="Romance clássico"> Romance Clássico </option>
-          <option value="Fantasia">Fantasia</option>
-          <option value="Alegoria Política">Alegoria Política</option>
-          <option value="Suspense">Suspense</option>
-          <option value="Ficção Clássica">Ficção Clássica</option>
-          <option value="Ficção de Crescimento">Ficção de Crescimento</option>
-          <option value="Ficção Filosófica">Ficção Filosófica</option>
+          <option value="" data-cy="optionFilter">
+            Escolha um Gênero
+          </option>
+          <option value="Ficção Distópica" data-cy="optionFilter">
+            Ficção Distópica
+          </option>
+          <option value="Realismo mágico" data-cy="optionFilter">
+            Realismo Mágico
+          </option>
+          <option value="Romance clássico" data-cy="optionFilter">
+            {" "}
+            Romance Clássico{" "}
+          </option>
+          <option value="Fantasia" data-cy="optionFilter">
+            Fantasia
+          </option>
+          <option value="Alegoria Política" data-cy="optionFilter">
+            Alegoria Política
+          </option>
+          <option value="Suspense" data-cy="optionFilter">
+            Suspense
+          </option>
+          <option value="Ficção Clássica" data-cy="optionFilter">
+            Ficção Clássica
+          </option>
+          <option value="Ficção de Crescimento" data-cy="optionFilter">
+            Ficção de Crescimento
+          </option>
+          <option value="Ficção Filosófica" data-cy="optionFilter">
+            Ficção Filosófica
+          </option>
         </select>
       </div>
       <div className={style.conteinerFlex}>
