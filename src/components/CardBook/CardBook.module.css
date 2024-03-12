@@ -1,0 +1,25 @@
+.card {
+  margin-top:30px;
+  width: 30%;
+  height: 600px;
+ border-radius: 5px;
+  display:grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  background: #FEDEBD;
+  gap: 15px;
+  cursor:pointer;
+} .img {
+  width: 50%;
+}.title {
+  color: #140F2D ;
+  margin: 5px;
+}.autor {
+  margin-bottom: 10px;
+  font-weight: bold;
+} .card:hover {
+  transition: 0.5s;
+  background-color: #E3B23C;
+} .genre{
+  text-align: center;
+}
