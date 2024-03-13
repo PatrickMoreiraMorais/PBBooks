@@ -4,6 +4,7 @@ import style from "./BooksListPage.module.css";
 export default function BookListPage() {
   const [arrayBooks, setArrayBooks] = useState([]);
   const [state, setState] = useState("");
+  const [genre, setGenre] = useState("");
 
   async function request() {
     try {
@@ -28,11 +29,16 @@ export default function BookListPage() {
   }, []);
 
   const filterBooksList = arrayBooks.filter(
-    (book) =>
-      book.genre.toLowerCase().includes(state.toLowerCase()) ||
-      book.author.toLowerCase().includes(state.toLowerCase()) ||
-      book.title.toLowerCase().includes(state.toLowerCase())
+    (book) => {
+       if(state) {
+        return  book.author.toLowerCase().includes(state.toLowerCase()) ||
+        book.title.toLowerCase().includes(state.toLowerCase())
+      
+       }
+       return book.genre.toLowerCase().includes(genre.toLowerCase()) 
+    }
   );
+  
   return (
     <div className={style.body}>
       <div className={style.containerInput}>
@@ -41,11 +47,12 @@ export default function BookListPage() {
           onChange={(event) => setState(event.target.value)}
           placeholder="Pesquise um livro ou Autor"
           className={style.inputStyle}
+          data-cy="inputBusca"
         />
         <select
           name="FilterGenre"
-          value={state}
-          onChange={(event) => setState(event.target.value)}
+          value={genre}
+          onChange={(event) => setGenre(event.target.value)}
           className={style.selectStyle}
           data-cy="selectFilter"
         >

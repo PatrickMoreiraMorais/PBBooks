@@ -10,7 +10,7 @@
   gap: 15px;
   cursor:pointer;
 } .img {
-  width: 50%;
+  max-width: 50%;
 }.title {
   color: #140F2D ;
   margin: 5px;
